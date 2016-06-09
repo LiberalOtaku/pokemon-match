@@ -22,8 +22,8 @@ var app = {
       url: url + $('[name="id1"]').val(),
       method: 'get',
       success: function(pokemon) {
-        var head = $('<h3/>').text(pokemon.forms[0].name)
-                             .css({"text-align": "center",});
+        var head = $('<h3/>').css({"text-align": "center",})
+          .html(pokemon.forms[0].name + ' <img src="http://pokeapi.co/media/sprites/pokemon/' + pokemon.id + '.png"></img>');
         var dl = $('<dl/>').css({
           "list-style": "none",
           "background-color": "orange",
@@ -51,8 +51,8 @@ var app = {
           url: url + $('[name="id2"]').val(),
           method: 'get',
           success: function(pokemon) {
-            var head = $('<h3/>').text(pokemon.forms[0].name)
-                                 .css({"text-align": "center",});
+            var head = $('<h3/>').css({"text-align": "center",})
+              .html(pokemon.forms[0].name + ' <img src="http://pokeapi.co/media/sprites/pokemon/' + pokemon.id + '.png"></img>');
             var dl = $('<dl/>').css({
               "list-style": "none",
               "background-color": "orange",
@@ -90,9 +90,10 @@ var app = {
   calculateCompatability: function(pokemon1, pokemon2) {
     var sum = 0;
     for (var i = 0; i < 6; ++i) {
-      sum += Math.pow(((pokemon1[i] - pokemon2[i]) / ((pokemon1[i] + pokemon2[i]) / 2)), 2);
+      sum += Math.abs(pokemon1[i] - pokemon2[i]) / ((pokemon1[i] + pokemon2[i]) / 2);
     }
-    return Math.round((1 - sum) * 100);
+
+    return Math.round((1 - (sum / 6)) * 100);
   }
 };
 
