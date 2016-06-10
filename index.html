@@ -4,18 +4,35 @@
     <meta charset="utf-8">
     <title>Pokemon Match!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css">
+    <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
     <h1 style="text-align: center">Pokemon Match!</h1>
 
-    <p>
-      Enter a Pokemon ID number from 1 to 721 or from 10001 to 10090.
-    </p>
-    <form id="pokeForm">
-      <input type="number" name="id1" placeholder="Enter First Pokemon ID" min="1" max="10090" required="true">
-      <input type="number" name="id2" placeholder="Enter Second Pokemon ID" min="1" max="10090" required="true">
-      <button type="submit" name="button" class="expanded button">Match!</button>
-    </form>
+    <div class="medium-offset-1 medium-10 columns">
+      <p>Enter a Pokemon ID number from 1 to 721 or from 10001 to 10090.</p>
+      <form id="pokeForm">
+        <div class="row">
+          <div class="medium-9 columns">
+            <input type="number" name="id1" placeholder="Enter First Pokemon ID" min="1" max="10090" required="true">
+          </div>
+          <div class="medium-3 columns">
+            <button type="button" name="random1" class="button expanded">Random!</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-9 columns">
+            <input type="number" name="id2" placeholder="Enter Second Pokemon ID" min="1" max="10090" required="true">
+          </div>
+          <div class="medium-3 columns">
+            <button type="button" name="random2" class="button expanded">Random!</button>
+          </div>
+        </div>
+        <div class="row">
+          <button type="submit" name="button" class="expanded button">Match!</button>
+        </div>
+      </form>
+    </div>
 
     <div id="pokeList" class="results-area">
 

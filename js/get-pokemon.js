@@ -9,6 +9,26 @@ var app = {
 
   setupEventListeners: function() {
     this.form.submit(this.getMatch.bind(this));
+    this.form.find('[name="random1"]').click(this.getRandomID1.bind(this));
+    this.form.find('[name="random2"]').click(this.getRandomID2.bind(this));
+  },
+
+  getRandomID1: function(event) {
+    event.preventDefault();
+    var id = Math.floor(Math.random() * 811 + 1);
+    if (id > 721) {
+      id += 9279;
+    }
+    this.form.find('[name="id1"]').val(id);
+  },
+
+  getRandomID2: function(event) {
+    event.preventDefault();
+    var id = Math.floor(Math.random() * 811 + 1);
+    if (id > 721) {
+      id += 9279;
+    }
+    this.form.find('[name="id2"]').val(id);
   },
 
   getMatch: function(event) {
@@ -52,7 +72,7 @@ var app = {
           method: 'get',
           success: function(pokemon) {
             var head = $('<h3/>').css({"text-align": "center",})
-              .html(pokemon.forms[0].name + ' <img src="http://pokeapi.co/media/sprites/pokemon/' + pokemon.id + '.png"></img>');
+              .html(pokemon.forms[0].name + '<img src="http://pokeapi.co/media/sprites/pokemon/' + pokemon.id + '.png"></img>');
             var dl = $('<dl/>').css({
               "list-style": "none",
               "background-color": "orange",
